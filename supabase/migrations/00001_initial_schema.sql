@@ -169,6 +169,8 @@ create policy "Users can view own shop" on shops
   for select using (id in (select shop_id from users where id = auth.uid()));
 create policy "Users can update own shop" on shops
   for update using (id in (select shop_id from users where id = auth.uid()));
+create policy "Authenticated users can create shops" on shops
+  for insert with check (auth.role() = 'authenticated');
 
 -- Users: can see users in same shop
 create policy "Users can view shop members" on users
