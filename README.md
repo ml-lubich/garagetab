@@ -43,6 +43,7 @@ flowchart LR
 - [Getting Started](#getting-started)
 - [Requirements](#requirements)
 - [🗺️ Repository map](#️-repository-map)
+- [📊 Code composition](#-code-composition)
 
 ## Repair-order lifecycle
 
@@ -149,4 +150,21 @@ mindmap
       next.config.ts
       package.json
       tsconfig.json
+```
+
+
+## 📊 Code composition
+
+File-type breakdown of source under this repo (skips `.git`, `node_modules`, build caches, lockfiles).
+
+```mermaid
+pie showData title File-type composition of garagetab (44 files)
+    "TypeScript" : 28
+    "SVG image" : 5
+    "Markdown" : 4
+    "JavaScript" : 2
+    "JSON" : 2
+    "Image" : 1
+    "CSS" : 1
+    "SQL" : 1
 ```
