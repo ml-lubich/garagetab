@@ -38,8 +38,48 @@ flowchart LR
 
 - [Stack](#stack)
 - [Architecture](#architecture)
+- [Repair-order lifecycle](#repair-order-lifecycle)
+- [Customer approval (sequence)](#customer-approval-sequence)
 - [Getting Started](#getting-started)
 - [Requirements](#requirements)
+
+## Repair-order lifecycle
+
+```mermaid
+stateDiagram-v2
+    [*] --> DRAFT: mechanic creates RO
+    DRAFT --> INSPECTED: digital inspection (photos)
+    INSPECTED --> AWAITING_APPROVAL: send SMS to customer
+    AWAITING_APPROVAL --> APPROVED: customer taps approve
+    AWAITING_APPROVAL --> DECLINED: customer declines
+    APPROVED --> IN_PROGRESS: work started
+    IN_PROGRESS --> READY: parts installed
+    READY --> INVOICED: invoice generated
+    INVOICED --> PAID: payment received
+    PAID --> [*]
+    DECLINED --> [*]
+```
+
+## Customer approval (sequence)
+
+```mermaid
+sequenceDiagram
+    participant M as mechanic
+    participant APP as /(shell)
+    participant DB as Supabase
+    participant SMS as SMS provider
+    participant C as customer
+
+    M->>APP: complete inspection
+    APP->>DB: insert RO + photos
+    APP->>SMS: send approve link
+    SMS-->>C: SMS with link
+    C->>APP: GET /approve/[id]
+    C->>APP: tap Approve
+    APP->>DB: status=APPROVED
+    APP-->>M: notify (live)
+    M->>APP: mark READY → INVOICED
+```
 
 ## Stack
 
