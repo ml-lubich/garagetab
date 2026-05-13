@@ -42,6 +42,7 @@ flowchart LR
 - [Customer approval (sequence)](#customer-approval-sequence)
 - [Getting Started](#getting-started)
 - [Requirements](#requirements)
+- [🗺️ Repository map](#️-repository-map)
 
 ## Repair-order lifecycle
 
@@ -111,3 +112,41 @@ Open [http://localhost:3000](http://localhost:3000).
 ## Requirements
 
 See [REQUIREMENTS.md](REQUIREMENTS.md) for product vision, target customer, and competitive positioning.
+
+
+## 🗺️ Repository map
+
+Top-level layout of `garagetab` rendered as a Mermaid mindmap (auto-generated from the on-disk tree).
+
+```mermaid
+mindmap
+  root((garagetab))
+    app/
+      _shell_
+      approve
+      favicon.ico
+      globals.css
+      inspect
+      invoice
+    components/
+      sidebar.tsx
+      ui.tsx
+    lib/
+      auth.ts
+      supabase
+      types
+      utils.ts
+    public/
+      file.svg
+      globe.svg
+      next.svg
+      vercel.svg
+      window.svg
+    supabase/
+      migrations
+    files
+      README.md
+      next.config.ts
+      package.json
+      tsconfig.json
+```
